@@ -1,29 +1,17 @@
-name: "Prow github actions"
+name: "Merge on lgtm label"
 on:
-  issue_comment:
-    types: [created]
+  schedule:
+    - cron: "*/20 * * * *"
 
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - uses: jpmcb/prow-github-actions@v1.1.3
+      - uses: actions/checkout@v1
+      - run: npm install
+      - run: npm run build
+      - uses: ./
         with:
-          prow-commands: |
-            /assign
-            /unassign
-            /approve
-            /retitle
-            /area
-            /kind
-            /priority
-            /remove
-            /lgtm
-            /close
-            /reopen
-            /lock
-            /milestone
-            /hold
-            /cc
-            /uncc
+          jobs: 'lgtm'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+          merge-method: 'squash'
