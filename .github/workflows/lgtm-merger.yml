@@ -1,6 +1,5 @@
-name: "Merge on lgtm label"
+name: "Merge on LGTM Label"
 on:
-  workflow_dispatch:
   schedule:
     - cron: "*/20 * * * *"
 
