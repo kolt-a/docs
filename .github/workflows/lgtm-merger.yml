@@ -1,17 +1,17 @@
-name: "Merge on lgtm label"
+name: "Merge on LGTM Label"
 on:
   schedule:
-    - cron: "*/20 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: npm install
-      - run: npm run build
-      - uses: ./
+      - uses: chnsz/prow-github-actions@v1.0.0
         with:
           jobs: 'lgtm'
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: "${{ secrets.PAT }}"
+
+          # this configuration is optional and will default to 'merge'
+          # possible options are 'merge', 'rebase', or 'squash'
           merge-method: 'squash'
