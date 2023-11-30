@@ -7,10 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: chnsz/prow-github-actions@v1.0.0
-        if: ${{ github.repository == 'g42cloud-terraform/terraform-provider-g42cloud' }}
         with:
           jobs: 'lgtm'
-          github-token: "${{ secrets.ROBOT_PAT }}"
+          github-token: "${{ secrets.PAT }}"
           # this configuration is optional and will default to 'merge'
           # possible options are 'merge', 'rebase', or 'squash'
           merge-method: 'squash'
