@@ -7,8 +7,6 @@ jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Automatic Merge PR
         if: ${{ contains(github.event.pull_request.labels.*.name, 'LGTM') ||  contains(github.event.pull_request.labels.*.name, 'approved') }}
         uses: chnsz/prow-github-actions@v1.0.0
