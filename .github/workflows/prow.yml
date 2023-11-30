@@ -1,7 +1,7 @@
-name: "Prow github actions"
+name: "Prow actions"
 on:
-  pull_request_target:
-    types: [ opened, edited, reopened, synchronize ]
+  pull_request:
+    branches: [ main ]
   issue_comment:
     types: [created]
 
