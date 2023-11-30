@@ -1,5 +1,7 @@
 name: "Prow actions"
 on:
+  pull_request_target:
+    types: [ opened, edited, reopened, synchronize ]
   issue_comment:
     types: [created]
 
@@ -10,6 +12,7 @@ jobs:
       - name: Prow action
         uses: chnsz/prow-github-actions@v1.0.0
         with:
+          jons: lgtm
           prow-commands: |
             /assign
             /unassign
