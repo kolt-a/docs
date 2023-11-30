@@ -9,8 +9,6 @@ jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Prow action
         uses: chnsz/prow-github-actions@v1.0.0
         with:
