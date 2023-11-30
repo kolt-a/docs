@@ -9,4 +9,5 @@ jobs:
         uses: chnsz/prow-github-actions@v1.0.0
         with:
           github-token: "${{ secrets.PAT }}"
+          token: 'xxxx'
           jobs: lgtm
