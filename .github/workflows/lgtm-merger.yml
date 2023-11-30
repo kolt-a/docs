@@ -1,16 +1,16 @@
 name: "Merge on LGTM Label"
 on:
-  pull_request:
-    types:
-      - labeled
+  schedule:
+    - cron: "*/5 * * * *"
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Automatic Merge PR
-        if: ${{ contains(github.event.pull_request.labels.*.name, 'LGTM') ||  contains(github.event.pull_request.labels.*.name, 'approved') }}
-        uses: chnsz/prow-github-actions@v1.0.0
+      - uses: chnsz/prow-github-actions@v1.0.0
+        if: ${{ github.repository == 'g42cloud-terraform/terraform-provider-g42cloud' }}
         with:
           jobs: 'lgtm'
-          github-token: "${{ secrets.PAT }}"
+          github-token: "${{ secrets.ROBOT_PAT }}"
+          # this configuration is optional and will default to 'merge'
+          # possible options are 'merge', 'rebase', or 'squash'
           merge-method: 'squash'
