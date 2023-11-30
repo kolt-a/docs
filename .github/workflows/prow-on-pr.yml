@@ -1,14 +1,11 @@
 name: "Run Jobs on PR"
-on:
-  pull_request:
-    branches: [ main ]
+on: pull_request
 
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Prow action
-        uses: chnsz/prow-github-actions@v1.0.0
+      - uses: chnsz/prow-github-actions@v1.0.0
         with:
           jobs: 'lgtm'
           github-token: "${{ secrets.PAT }}"
