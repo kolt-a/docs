@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prow action
-        uses: chnsz/prow-github-actions@v1.0.0
+        uses: chnsz/prow-github-actions@master
         with:
           jobs: lgtm
           prow-commands: |
